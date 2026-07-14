@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Klickson Paints & Chemicals — We're Hiring: Executive Assistant</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow+Condensed:wght@500;600;700&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap');
+
+:root{
+  --navy: #14294D;
+  --navy-2: #1E3A6E;
+  --steel: #5B6470;
+  --steel-light: #9AA3AE;
+  --paper: #EDEFF2;
+  --white: #FFFFFF;
+  --safety: #F4B400;
+  --safety-deep: #C98F00;
+  --ink: #1B1F24;
+  --line: #D7DBE1;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Work Sans', sans-serif;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block;}
+
+.eyebrow{
+  font-family:'Barlow Condensed', sans-serif;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:0.14em;
+  font-size:0.82rem;
+  color:var(--navy-2);
+}
+.mono{
+  font-family:'IBM Plex Mono', monospace;
+}
+
+/* ---------- HEADER ---------- */
+header{
+  position:sticky; top:0; z-index:50;
+  background:rgba(237,239,242,0.92);
+  backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--line);
+}
+.header-inner{
+  max-width:1100px; margin:0 auto;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 24px;
+}
+.logo-wrap{display:flex; align-items:center; gap:10px;}
+.logo-wrap img{height:36px; width:auto;}
+.header-cta{
+  font-family:'Barlow Condensed', sans-serif;
+  font-weight:600; letter-spacing:0.06em; text-transform:uppercase;
+  font-size:0.85rem;
+  background:var(--navy);
+  color:var(--white);
+  padding:10px 20px;
+  border-radius:2px;
+  text-decoration:none;
+  border:1px solid var(--navy);
+  transition:background .15s ease;
+}
+.header-cta:hover{background:var(--navy-2);}
+
+/* ---------- HERO ---------- */
+.hero{
+  max-width:1100px; margin:0 auto;
+  padding:72px 24px 40px;
+}
+.hero .eyebrow{margin-bottom:18px;}
+.hero h1{
+  font-family:'Archivo Black', sans-serif;
+  font-size:clamp(2.4rem, 6vw, 4.2rem);
+  line-height:1.03;
+  margin:0 0 22px;
+  max-width:15ch;
+  color:var(--navy);
+}
+.hero p.lead{
+  font-size:1.18rem;
+  max-width:52ch;
+  color:var(--steel);
+  margin:0 0 34px;
+}
+.hero-actions{display:flex; align-items:center; gap:22px; flex-wrap:wrap;}
+.btn-primary{
+  font-family:'Barlow Condensed', sans-serif;
+  font-weight:700; letter-spacing:0.04em; text-transform:uppercase;
+  font-size:1rem;
+  background:var(--safety);
+  color:var(--ink);
+  padding:16px 34px;
+  border-radius:2px;
+  text-decoration:none;
+  display:inline-block;
+  border:1px solid var(--safety-deep);
+  box-shadow:0 2px 0 var(--safety-deep);
+  transition:transform .12s ease;
+}
+.btn-primary:hover{transform:translateY(-2px);}
+.hero-note{font-size:0.9rem; color:var(--steel);}
+
+/* meta / spec strip like a paint-can label */
+.spec-strip{
+  margin-top:48px;
+  border:1px solid var(--navy);
+  border-radius:2px;
+  display:flex;
+  flex-wrap:wrap;
+}
+.spec-strip div{
+  flex:1 1 auto;
+  padding:14px 20px;
+  font-family:'IBM Plex Mono', monospace;
+  font-size:0.82rem;
+  letter-spacing:0.04em;
+  text-transform:uppercase;
+  color:var(--navy);
+  border-right:1px solid var(--navy);
+}
+.spec-strip div:last-child{border-right:none;}
+.spec-strip span{display:block; color:var(--steel-light); font-size:0.7rem; margin-bottom:3px;}
+
+/* ---------- SECTION SHELLS ---------- */
+section.block{
+  max-width:1100px; margin:0 auto;
+  padding:64px 24px;
+}
+section.block h2{
+  font-family:'Archivo Black', sans-serif;
+  font-size:clamp(1.5rem, 3.4vw, 2.1rem);
+  color:var(--navy);
+  margin:14px 0 24px;
+}
+.block-lead{
+  max-width:62ch;
+  color:var(--steel);
+  font-size:1.05rem;
+  margin-bottom:8px;
+}
+
+/* ---------- SWATCH SIGNATURE STRIP ---------- */
+.swatch-band{
+  background:var(--navy);
+  padding:56px 24px 64px;
+}
+.swatch-inner{max-width:1100px; margin:0 auto;}
+.swatch-inner .eyebrow{color:var(--safety); margin-bottom:8px;}
+.swatch-inner h2{
+  font-family:'Archivo Black', sans-serif;
+  color:var(--white);
+  font-size:clamp(1.4rem,3vw,1.9rem);
+  margin:0 0 40px;
+  max-width:26ch;
+}
+.swatch-strip{
+  display:flex;
+  gap:0;
+  padding-left:10px;
+}
+.swatch{
+  width:150px; height:190px;
+  margin-left:-28px;
+  border-radius:4px;
+  box-shadow:0 10px 24px rgba(0,0,0,0.35);
+  display:flex; flex-direction:column; justify-content:flex-end;
+  padding:14px;
+  transition:transform .2s ease, box-shadow .2s ease;
+  cursor:default;
+}
+.swatch:first-child{margin-left:0;}
+.swatch:hover{transform:translateY(-16px) rotate(0deg) !important; z-index:5; box-shadow:0 18px 30px rgba(0,0,0,0.45);}
+.swatch span{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:0.72rem;
+  text-transform:uppercase;
+  letter-spacing:0.05em;
+}
+.swatch b{
+  display:block;
+  font-family:'Barlow Condensed', sans-serif;
+  font-weight:700;
+  font-size:1.15rem;
+  text-transform:uppercase;
+}
+
+/* ---------- CHECK GRIDS ---------- */
+.grid-2{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:16px 28px;
+  margin-top:28px;
+}
+.check-item{
+  display:flex; gap:12px; align-items:flex-start;
+  padding:16px 18px;
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:3px;
+}
+.check-item .mark{
+  flex:0 0 auto;
+  width:22px; height:22px;
+  border-radius:50%;
+  background:var(--navy);
+  color:var(--white);
+  font-size:0.8rem;
+  display:flex; align-items:center; justify-content:center;
+  font-weight:700;
+}
+.check-item.alt .mark{background:var(--safety); color:var(--ink);}
+.check-item p{margin:0; font-size:0.98rem;}
+
+/* ---------- APPLY FORM ---------- */
+.apply-band{
+  background:var(--white);
+  border-top:1px solid var(--line);
+}
+.apply-inner{
+  max-width:640px; margin:0 auto;
+  padding:64px 24px 90px;
+}
+.apply-inner .eyebrow{margin-bottom:10px;}
+.apply-inner h2{
+  font-family:'Archivo Black', sans-serif;
+  color:var(--navy);
+  font-size:clamp(1.5rem,3.4vw,2rem);
+  margin:0 0 10px;
+}
+.apply-inner p.block-lead{margin-bottom:36px;}
+
+.field{margin-bottom:24px;}
+.field label{
+  display:block;
+  font-weight:600;
+  font-size:0.95rem;
+  margin-bottom:8px;
+  color:var(--ink);
+}
+.field label .req{color:#C0392B;}
+.field input[type=text], .field input[type=email], .field input[type=tel]{
+  width:100%;
+  padding:13px 14px;
+  border:1px solid var(--line);
+  border-radius:3px;
+  font-family:'Work Sans', sans-serif;
+  font-size:1rem;
+  background:var(--paper);
+  color:var(--ink);
+}
+.field input:focus, .field select:focus{
+  outline:2px solid var(--navy-2);
+  outline-offset:1px;
+  background:var(--white);
+}
+
+.phone-box{
+  border:1.5px solid var(--navy-2);
+  border-radius:5px;
+  padding:18px;
+  background:#F3F6FC;
+}
+.phone-box .row{display:flex; align-items:center; justify-content:space-between; margin-bottom:10px;}
+.phone-box .row-label{
+  display:flex; align-items:center; gap:8px;
+  font-weight:700; color:var(--navy-2); font-size:0.98rem;
+}
+.badge{
+  font-family:'Barlow Condensed', sans-serif;
+  font-weight:700; letter-spacing:0.05em; text-transform:uppercase;
+  font-size:0.7rem;
+  background:var(--navy-2); color:var(--white);
+  padding:4px 10px; border-radius:20px;
+}
+.phone-box input{
+  width:100%;
+  padding:13px 14px;
+  border:1px solid var(--line);
+  border-radius:3px;
+  font-size:1rem;
+  background:var(--white);
+}
+.phone-hint{font-size:0.85rem; color:var(--steel); margin-top:8px;}
+
+.upload-box{
+  border:1px dashed var(--steel-light);
+  border-radius:3px;
+  padding:18px;
+  background:var(--paper);
+  display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+}
+.upload-box input[type=file]{font-family:'Work Sans', sans-serif; font-size:0.92rem;}
+.file-hint{font-size:0.85rem; color:var(--steel); font-weight:400;}
+
+.record-box{
+  border:1px solid var(--line);
+  border-radius:3px;
+  padding:18px;
+  background:var(--paper);
+  display:flex; align-items:center; gap:16px; flex-wrap:wrap;
+}
+.rec-btn{
+  display:flex; align-items:center; gap:10px;
+  border:1.5px solid var(--navy);
+  background:var(--white);
+  color:var(--navy);
+  font-weight:700;
+  font-size:0.95rem;
+  padding:10px 20px;
+  border-radius:30px;
+  cursor:pointer;
+  transition:background .15s ease, color .15s ease;
+}
+.rec-btn .dot{width:10px; height:10px; border-radius:50%; background:#C0392B;}
+.rec-btn.recording{background:#C0392B; color:var(--white); border-color:#C0392B;}
+.rec-btn.recording .dot{background:var(--white); animation:pulse 1s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
+.rec-status{font-size:0.9rem; color:var(--steel);}
+.rec-audio{margin-top:10px; width:100%;}
+
+.radio-group{display:flex; gap:24px; margin-top:6px;}
+.radio-option{display:flex; align-items:center; gap:8px; font-size:0.98rem;}
+.radio-option input{width:18px; height:18px; accent-color:var(--navy-2);}
+
+.submit-btn{
+  width:100%;
+  font-family:'Barlow Condensed', sans-serif;
+  font-weight:700; letter-spacing:0.05em; text-transform:uppercase;
+  font-size:1.08rem;
+  background:var(--navy);
+  color:var(--white);
+  padding:18px;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  margin-top:12px;
+  transition:background .15s ease;
+}
+.submit-btn:hover{background:var(--navy-2);}
+
+.form-note{
+  font-size:0.82rem; color:var(--steel); margin-top:16px; text-align:center;
+}
+
+.success-panel{
+  display:none;
+  text-align:center;
+  padding:40px 20px;
+}
+.success-panel .mark-big{
+  width:56px; height:56px; border-radius:50%;
+  background:var(--navy); color:var(--white);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.6rem; margin:0 auto 20px;
+}
+.success-panel h3{font-family:'Archivo Black', sans-serif; color:var(--navy); margin-bottom:10px;}
+.success-panel p{color:var(--steel); max-width:44ch; margin:0 auto;}
+
+/* ---------- FOOTER ---------- */
+footer{
+  background:var(--navy);
+  color:#B9C3D4;
+  padding:36px 24px;
+}
+.footer-inner{
+  max-width:1100px; margin:0 auto;
+  display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px;
+}
+.footer-inner img{height:26px; filter:brightness(0) invert(1); opacity:0.9;}
+.footer-inner p{margin:0; font-size:0.85rem;}
+
+@media (max-width:640px){
+  .grid-2{grid-template-columns:1fr;}
+  .spec-strip div{border-right:none; border-bottom:1px solid var(--navy);}
+  .spec-strip div:last-child{border-bottom:none;}
+  .swatch{width:110px; height:150px; margin-left:-20px;}
+  .swatch b{font-size:0.95rem;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo-wrap">
+      <img src="klickson-logo.png" alt="Klickson Paints">
+    </div>
+    <a href="#apply" class="header-cta">Apply Now</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="eyebrow">We're Hiring — Patiala</div>
+  <h1>This is not a regular office job.</h1>
+  <p class="lead">We're looking for someone who wants to become an important part of a fast-growing manufacturing company — not just fill a seat in it.</p>
+  <div class="hero-actions">
+    <a href="#apply" class="btn-primary">Apply for this role</a>
+    <span class="hero-note">Takes about 5 minutes</span>
+  </div>
+
+  <div class="spec-strip">
+    <div><span>Role</span>Executive Assistant</div>
+    <div><span>Type</span>Full-Time</div>
+    <div><span>Location</span>Patiala</div>
+    <div><span>Reports To</span>CEO / Director</div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="eyebrow">The Role</div>
+  <h2>You'll work where decisions actually get made.</h2>
+  <p class="block-lead">At Klickson Paints &amp; Chemicals, you'll work directly with the CEO — helping execute business strategies, manage priorities, improve operations, and make sure important work gets done on time.</p>
+  <p class="block-lead">If you enjoy solving problems, taking ownership, and learning how a business actually grows from the inside, this opportunity is for you.</p>
+</section>
+
+<div class="swatch-band">
+  <div class="swatch-inner">
+    <div class="eyebrow">What This Job Runs On</div>
+    <h2>Five traits, no shortcuts.</h2>
+    <div class="swatch-strip">
+      <div class="swatch" style="background:#1E3A6E; transform:rotate(-6deg);"><span style="color:#AFC1DE;">01</span><b style="color:#fff;">Ownership</b></div>
+      <div class="swatch" style="background:#F4B400; transform:rotate(-3deg);"><span style="color:#7A5600;">02</span><b style="color:#1B1F24;">Initiative</b></div>
+      <div class="swatch" style="background:#5B6470; transform:rotate(0deg);"><span style="color:#DDE1E6;">03</span><b style="color:#fff;">Execution</b></div>
+      <div class="swatch" style="background:#0E1D36; transform:rotate(3deg);"><span style="color:#8FA3C4;">04</span><b style="color:#fff;">Confidentiality</b></div>
+      <div class="swatch" style="background:#C98F00; transform:rotate(6deg);"><span style="color:#4A3600;">05</span><b style="color:#1B1F24;">Growth</b></div>
+    </div>
+  </div>
+</div>
+
+<section class="block">
+  <div class="eyebrow">What You'll Do</div>
+  <h2>Day to day, your desk looks like this.</h2>
+  <div class="grid-2">
+    <div class="check-item"><div class="mark">✓</div><p>Manage the Director's calendar and daily priorities</p></div>
+    <div class="check-item"><div class="mark">✓</div><p>Coordinate meetings and follow-ups</p></div>
+    <div class="check-item"><div class="mark">✓</div><p>Prepare reports and presentations</p></div>
+    <div class="check-item"><div class="mark">✓</div><p>Organize projects and documentation</p></div>
+    <div class="check-item"><div class="mark">✓</div><p>Communicate with vendors, clients, and internal teams</p></div>
+    <div class="check-item"><div class="mark">✓</div><p>Assist in HR and recruitment activities</p></div>
+    <div class="check-item"><div class="mark">✓</div><p>Use AI tools like ChatGPT to improve productivity</p></div>
+    <div class="check-item"><div class="mark">✓</div><p>Ensure execution of key business initiatives</p></div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="eyebrow">Who Should Apply</div>
+  <h2>You may be the right fit if you —</h2>
+  <div class="grid-2">
+    <div class="check-item alt"><div class="mark">✓</div><p>Love organizing work</p></div>
+    <div class="check-item alt"><div class="mark">✓</div><p>Learn quickly</p></div>
+    <div class="check-item alt"><div class="mark">✓</div><p>Take initiative without being reminded</p></div>
+    <div class="check-item alt"><div class="mark">✓</div><p>Are confident while communicating</p></div>
+    <div class="check-item alt"><div class="mark">✓</div><p>Can maintain confidentiality</p></div>
+    <div class="check-item alt"><div class="mark">✓</div><p>Are comfortable using technology</p></div>
+  </div>
+</section>
+
+<div class="apply-band" id="apply">
+  <div class="apply-inner">
+    <div class="eyebrow">Application</div>
+    <h2>Ready? Let's start.</h2>
+    <p class="block-lead">Fill this in and we'll be in touch. Keep your phone reachable — that's the fastest way we'll get back to you.</p>
+
+    <form id="applyForm">
+      <div class="field">
+        <label for="fullName">Full name <span class="req">*</span></label>
+        <input type="text" id="fullName" name="fullName" required>
+      </div>
+
+      <div class="field">
+        <label for="email">Email address <span class="req">*</span></label>
+        <input type="email" id="email" name="email" required>
+      </div>
+
+      <div class="field">
+        <div class="phone-box">
+          <div class="row">
+            <div class="row-label">📞 Phone number <span class="req">*</span></div>
+            <div class="badge">We'll Call You</div>
+          </div>
+          <input type="tel" id="phone" name="phone" placeholder="+91 XXXXX XXXXX" pattern="^\+?[0-9\s]{10,14}$" required>
+          <div class="phone-hint">Make sure this number is reachable — it's the fastest way we'll reach you.</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="resume">Upload resume <span class="req">*</span> <span class="file-hint">(PDF or Word, attach to the email manually)</span></label>
+        <div class="upload-box">
+          <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Record a 30-second voice intro <span class="file-hint">(optional but recommended — tell us why you'd be great on the phone)</span></label>
+        <div class="record-box">
+          <button type="button" class="rec-btn" id="recBtn"><span class="dot"></span><span id="recBtnText">Start recording</span></button>
+          <span class="rec-status" id="recStatus">No recording yet</span>
+          <audio class="rec-audio" id="recAudio" controls style="display:none;"></audio>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Are you comfortable working at our Patiala facility? <span class="req">*</span></label>
+        <div class="radio-group">
+          <label class="radio-option"><input type="radio" name="comfortable" value="yes" required> Yes</label>
+          <label class="radio-option"><input type="radio" name="comfortable" value="no"> No</label>
+        </div>
+      </div>
+
+      <button type="submit" class="submit-btn">Send application</button>
+      <p class="form-note">Voice recording (if any) will need to be attached manually — we'll show you how right after you submit.</p>
+    </form>
+
+    <div class="success-panel" id="successPanel">
+      <div class="mark-big">✓</div>
+      <h3>Application ready to send</h3>
+      <p>Your email app should now be open with your details filled in. Please attach your resume<span id="attachAudioNote"></span> before hitting send.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <img src="klickson-logo.png" alt="Klickson Paints">
+    <p>Klickson Paints &amp; Chemicals · Patiala, Punjab · careers@klicksonpaints.com</p>
+  </div>
+</footer>
+
+<script>
+// ---- Voice recording ----
+let mediaRecorder, chunks = [], recording = false, timerInterval, secondsLeft = 30, recordedBlob = null;
+const recBtn = document.getElementById('recBtn');
+const recBtnText = document.getElementById('recBtnText');
+const recStatus = document.getElementById('recStatus');
+const recAudio = document.getElementById('recAudio');
+
+recBtn.addEventListener('click', async () => {
+  if (!recording) {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      chunks = [];
+      mediaRecorder = new MediaRecorder(stream);
+      mediaRecorder.ondataavailable = e => chunks.push(e.data);
+      mediaRecorder.onstop = () => {
+        recordedBlob = new Blob(chunks, { type: 'audio/webm' });
+        recAudio.src = URL.createObjectURL(recordedBlob);
+        recAudio.style.display = 'block';
+        recStatus.textContent = 'Recording saved (' + (30 - secondsLeft) + 's)';
+        stream.getTracks().forEach(t => t.stop());
+      };
+      mediaRecorder.start();
+      recording = true;
+      secondsLeft = 30;
+      recBtn.classList.add('recording');
+      recBtnText.textContent = 'Stop recording';
+      recStatus.textContent = 'Recording… 30s';
+      timerInterval = setInterval(() => {
+        secondsLeft--;
+        recStatus.textContent = 'Recording… ' + secondsLeft + 's';
+        if (secondsLeft <= 0) stopRecording();
+      }, 1000);
+    } catch (err) {
+      recStatus.textContent = 'Microphone access denied or unavailable.';
+    }
+  } else {
+    stopRecording();
+  }
+});
+
+function stopRecording(){
+  if (mediaRecorder && recording) {
+    mediaRecorder.stop();
+  }
+  clearInterval(timerInterval);
+  recording = false;
+  recBtn.classList.remove('recording');
+  recBtnText.textContent = 'Start recording';
+}
+
+// ---- Form submit -> mailto ----
+const form = document.getElementById('applyForm');
+const successPanel = document.getElementById('successPanel');
+const attachAudioNote = document.getElementById('attachAudioNote');
+
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+
+  const fullName = document.getElementById('fullName').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const resumeFile = document.getElementById('resume').files[0];
+  const comfortable = document.querySelector('input[name=comfortable]:checked');
+
+  if(!fullName || !email || !phone || !resumeFile || !comfortable){
+    alert('Please fill in all required fields before submitting.');
+    return;
+  }
+
+  attachAudioNote.textContent = recordedBlob ? ' and your voice recording' : '';
+
+  const subject = encodeURIComponent('Application: Executive Assistant — ' + fullName);
+  const body = encodeURIComponent(
+    'Full name: ' + fullName + '\n' +
+    'Email: ' + email + '\n' +
+    'Phone: ' + phone + '\n' +
+    'Resume file to attach: ' + resumeFile.name + '\n' +
+    'Comfortable working at Patiala facility: ' + comfortable.value + '\n' +
+    (recordedBlob ? 'Note: a voice recording was made in-browser — please attach it manually as it cannot be sent automatically.\n' : '') +
+    '\n— Sent from the Klickson Paints careers page'
+  );
+
+  window.location.href = 'mailto:careers@klicksonpaints.com?subject=' + subject + '&body=' + body;
+
+  form.style.display = 'none';
+  successPanel.style.display = 'block';
+});
+</script>
+
+</body>
+</html>
