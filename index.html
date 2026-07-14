@@ -419,33 +419,6 @@ section.block h2{
 .upload-box input[type=file]{font-family:'Work Sans', sans-serif; font-size:0.92rem;}
 .file-hint{font-size:0.85rem; color:var(--steel); font-weight:400;}
 
-.record-box{
-  border:1px solid var(--line);
-  border-radius:3px;
-  padding:18px;
-  background:var(--paper);
-  display:flex; align-items:center; gap:16px; flex-wrap:wrap;
-}
-.rec-btn{
-  display:flex; align-items:center; gap:10px;
-  border:1.5px solid var(--navy);
-  background:var(--white);
-  color:var(--navy);
-  font-weight:700;
-  font-size:0.95rem;
-  padding:10px 20px;
-  border-radius:30px;
-  cursor:pointer;
-  transition:background .15s ease, color .15s ease, transform .15s ease, box-shadow .15s ease;
-}
-.rec-btn:hover{transform:translateY(-2px); box-shadow:0 8px 18px rgba(20,41,77,0.15);}
-.rec-btn .dot{width:10px; height:10px; border-radius:50%; background:#C0392B;}
-.rec-btn.recording{background:#C0392B; color:var(--white); border-color:#C0392B;}
-.rec-btn.recording .dot{background:var(--white); animation:pulse 1s infinite;}
-@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
-.rec-status{font-size:0.9rem; color:var(--steel);}
-.rec-audio{margin-top:10px; width:100%;}
-
 .radio-group{display:flex; gap:24px; margin-top:6px;}
 .radio-option{display:flex; align-items:center; gap:8px; font-size:0.98rem;}
 .radio-option input{width:18px; height:18px; accent-color:var(--navy-2);}
@@ -539,6 +512,7 @@ footer{
     <div><span>Type</span>Full-Time</div>
     <div><span>Location</span>Patiala</div>
     <div><span>Reports To</span>CEO / Director</div>
+    <div><span>Salary</span>₹18,000 – ₹20,000 / month</div>
   </div>
 </section>
 
@@ -627,15 +601,6 @@ footer{
       </div>
 
       <div class="field">
-        <label>Record a 30-second voice intro <span class="file-hint">(optional but recommended — tell us why you'd be great on the phone)</span></label>
-        <div class="record-box">
-          <button type="button" class="rec-btn" id="recBtn"><span class="dot"></span><span id="recBtnText">Start recording</span></button>
-          <span class="rec-status" id="recStatus">No recording yet</span>
-          <audio class="rec-audio" id="recAudio" controls style="display:none;"></audio>
-        </div>
-      </div>
-
-      <div class="field">
         <label>Are you comfortable working at our Patiala facility? <span class="req">*</span></label>
         <div class="radio-group">
           <label class="radio-option"><input type="radio" name="comfortable" value="yes" required> Yes</label>
@@ -644,13 +609,13 @@ footer{
       </div>
 
       <button type="submit" class="submit-btn">Send application</button>
-      <p class="form-note">Voice recording (if any) will need to be attached manually — we'll show you how right after you submit.</p>
+      <p class="form-note">We'll open your email app with your details filled in — just attach your resume before hitting send.</p>
     </form>
 
     <div class="success-panel" id="successPanel">
       <div class="mark-big">✓</div>
       <h3>Application ready to send</h3>
-      <p>Your email app should now be open with your details filled in. Please attach your resume<span id="attachAudioNote"></span> before hitting send.</p>
+      <p>Your email app should now be open with your details filled in. Please attach your resume before hitting send.</p>
     </div>
   </div>
 </div>
@@ -663,60 +628,9 @@ footer{
 </footer>
 
 <script>
-// ---- Voice recording ----
-let mediaRecorder, chunks = [], recording = false, timerInterval, secondsLeft = 30, recordedBlob = null;
-const recBtn = document.getElementById('recBtn');
-const recBtnText = document.getElementById('recBtnText');
-const recStatus = document.getElementById('recStatus');
-const recAudio = document.getElementById('recAudio');
-
-recBtn.addEventListener('click', async () => {
-  if (!recording) {
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      chunks = [];
-      mediaRecorder = new MediaRecorder(stream);
-      mediaRecorder.ondataavailable = e => chunks.push(e.data);
-      mediaRecorder.onstop = () => {
-        recordedBlob = new Blob(chunks, { type: 'audio/webm' });
-        recAudio.src = URL.createObjectURL(recordedBlob);
-        recAudio.style.display = 'block';
-        recStatus.textContent = 'Recording saved (' + (30 - secondsLeft) + 's)';
-        stream.getTracks().forEach(t => t.stop());
-      };
-      mediaRecorder.start();
-      recording = true;
-      secondsLeft = 30;
-      recBtn.classList.add('recording');
-      recBtnText.textContent = 'Stop recording';
-      recStatus.textContent = 'Recording… 30s';
-      timerInterval = setInterval(() => {
-        secondsLeft--;
-        recStatus.textContent = 'Recording… ' + secondsLeft + 's';
-        if (secondsLeft <= 0) stopRecording();
-      }, 1000);
-    } catch (err) {
-      recStatus.textContent = 'Microphone access denied or unavailable.';
-    }
-  } else {
-    stopRecording();
-  }
-});
-
-function stopRecording(){
-  if (mediaRecorder && recording) {
-    mediaRecorder.stop();
-  }
-  clearInterval(timerInterval);
-  recording = false;
-  recBtn.classList.remove('recording');
-  recBtnText.textContent = 'Start recording';
-}
-
 // ---- Form submit -> mailto ----
 const form = document.getElementById('applyForm');
 const successPanel = document.getElementById('successPanel');
-const attachAudioNote = document.getElementById('attachAudioNote');
 
 form.addEventListener('submit', function(e){
   e.preventDefault();
@@ -732,8 +646,6 @@ form.addEventListener('submit', function(e){
     return;
   }
 
-  attachAudioNote.textContent = recordedBlob ? ' and your voice recording' : '';
-
   const subject = encodeURIComponent('Application: Executive Assistant — ' + fullName);
   const body = encodeURIComponent(
     'Full name: ' + fullName + '\n' +
@@ -741,7 +653,6 @@ form.addEventListener('submit', function(e){
     'Phone: ' + phone + '\n' +
     'Resume file to attach: ' + resumeFile.name + '\n' +
     'Comfortable working at Patiala facility: ' + comfortable.value + '\n' +
-    (recordedBlob ? 'Note: a voice recording was made in-browser — please attach it manually as it cannot be sent automatically.\n' : '') +
     '\n— Sent from the Klickson Paints careers page'
   );
 
