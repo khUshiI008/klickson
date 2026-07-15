@@ -609,13 +609,13 @@ footer{
       </div>
 
       <button type="submit" class="submit-btn">Send application</button>
-      <p class="form-note">We'll open your email app with your details filled in — just attach your resume before hitting send.</p>
+      <p class="form-note">Your application and resume are sent straight to our hiring team — no email app needed.</p>
     </form>
 
     <div class="success-panel" id="successPanel">
       <div class="mark-big">✓</div>
-      <h3>Application ready to send</h3>
-      <p>Your email app should now be open with your details filled in. Please attach your resume before hitting send.</p>
+      <h3>Application sent!</h3>
+      <p>Thanks for applying — your details and resume have been sent to our hiring team. We'll be in touch by phone or email.</p>
     </div>
   </div>
 </div>
@@ -623,16 +623,21 @@ footer{
 <footer>
   <div class="footer-inner">
     <img src="klickson-logo.jpeg" alt="Klickson Paints">
-    <p>Klickson Paints &amp; Chemicals · Patiala, Punjab · hiring.digiverse@gmail.com</p>
+    <p>Klickson Paints &amp; Chemicals · Patiala, Punjab · ea@klicksonpaints.com</p>
   </div>
 </footer>
 
 <script>
-// ---- Form submit -> mailto ----
+// ---- Form submit -> backend API (server sends the email) ----
+// Point this at wherever you deploy the klickson-backend server, e.g.
+// 'https://api.klicksonpaints.com/api/apply'
+const APPLY_ENDPOINT = '/api/apply';
+
 const form = document.getElementById('applyForm');
 const successPanel = document.getElementById('successPanel');
+const submitBtn = form.querySelector('.submit-btn');
 
-form.addEventListener('submit', function(e){
+form.addEventListener('submit', async function(e){
   e.preventDefault();
 
   const fullName = document.getElementById('fullName').value.trim();
@@ -646,20 +651,29 @@ form.addEventListener('submit', function(e){
     return;
   }
 
-  const subject = encodeURIComponent('Application: Executive Assistant — ' + fullName);
-  const body = encodeURIComponent(
-    'Full name: ' + fullName + '\n' +
-    'Email: ' + email + '\n' +
-    'Phone: ' + phone + '\n' +
-    'Resume file to attach: ' + resumeFile.name + '\n' +
-    'Comfortable working at Patiala facility: ' + comfortable.value + '\n' +
-    '\n— Sent from the Klickson Paints careers page'
-  );
+  const formData = new FormData();
+  formData.append('fullName', fullName);
+  formData.append('email', email);
+  formData.append('phone', phone);
+  formData.append('comfortable', comfortable.value);
+  formData.append('resume', resumeFile);
 
-  window.location.href = 'mailto:hiring.digiverse@gmail.com?subject=' + subject + '&body=' + body;
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Sending…';
 
-  form.style.display = 'none';
-  successPanel.style.display = 'block';
+  try {
+    const res = await fetch(APPLY_ENDPOINT, { method: 'POST', body: formData });
+    const data = await res.json();
+
+    if (!res.ok || !data.ok) throw new Error(data.error || 'Failed to send application.');
+
+    form.style.display = 'none';
+    successPanel.style.display = 'block';
+  } catch (err) {
+    alert('Sorry, something went wrong sending your application. Please try again or email ea@klicksonpaints.com directly.');
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Send application';
+  }
 });
 </script>
 
